@@ -1,0 +1,62 @@
+{
+  "name": "guanaco",
+  "version": "0.0.1",
+  "description": "A cute and cuddly multi-platform cryptocurrency quant trading engine in TypeScript.",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "mocha -r ts-node/register tst/**/*.spec.ts",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "author": "Anthony Krivonos",
+  "bugs": "https://github.com/anthonykrivonos/guanaco/issues",
+  "homepage": "https://github.com/anthonykrivonos/guanaco#readme",
+  "license": "MIT",
+  "files": [
+    "lib/**/*"
+  ],
+  "dependencies": {
+    "@types/node-cron": "^2.0.2",
+    "gemini-api": "github:mjesuele/gemini-api-node",
+    "node-cron": "^2.0.3"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.0",
+    "@types/mocha": "^5.2.7",
+    "chai": "^4.2.0",
+    "mocha": "^6.2.0",
+    "prettier": "^1.18.2",
+    "ts-node": "^8.3.0",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.5.3"
+  },
+  "keywords": [
+    "typescript",
+    "javascript",
+    "js",
+    "ts",
+    "algorithmic",
+    "algo",
+    "quantitative",
+    "quant",
+    "trading",
+    "trade",
+    "cryptocurrencies",
+    "cryptocurrency",
+    "crypto",
+    "bitcoin",
+    "coin",
+    "gemini-api",
+    "gemini",
+    "client",
+    "cron"
+  ]
+}

@@ -1,8 +1,6 @@
 import GeminiAPI, {
 	AccountTradesEntry,
 	AuctionHistoryEntry,
-	OrderExecutionOption,
-	OrderSide,
 	OrderStatus as GeminiOrderStatus,
 	Ticker,
 } from 'gemini-api'
@@ -13,6 +11,7 @@ import {
 	HistoricalTrade,
 	OrderId,
 	OrderResponse,
+	OrderSide,
 	OrderStatus,
 	OrderType,
 	Symbol,
@@ -44,22 +43,12 @@ export class GeminiClient implements Client {
 		}
 	}
 
-	public async buy(
-		symbol: Symbol,
-		amount: number,
-		price: number,
-		option?: OrderExecutionOption,
-	): Promise<OrderResponse> {
-		return this.placeOrder(OrderType.BUY, symbol, amount, price, option)
+	public async buy(symbol: Symbol, amount: number, price: number, type: OrderType): Promise<OrderResponse> {
+		return this.placeOrder(OrderSide.BUY, symbol, amount, price, type)
 	}
 
-	public async sell(
-		symbol: Symbol,
-		amount: number,
-		price: number,
-		option?: OrderExecutionOption,
-	): Promise<OrderResponse> {
-		return this.placeOrder(OrderType.SELL, symbol, amount, price, option)
+	public async sell(symbol: Symbol, amount: number, price: number, type: OrderType): Promise<OrderResponse> {
+		return this.placeOrder(OrderSide.BUY, symbol, amount, price, type)
 	}
 
 	public async cancel(orderId: OrderId): Promise<OrderResponse> {
@@ -135,7 +124,7 @@ export class GeminiClient implements Client {
 			price: Converter.strToNum(entry.price),
 			amount: Converter.strToNum(entry.amount),
 			timestamp: entry.timestamp,
-			type: (OrderType as any)[entry.type],
+			type: (OrderSide as any)[entry.type],
 			aggressor: entry.aggressor,
 			feeCurrency: entry.fee_currency,
 			feeAmount: Converter.strToNum(entry.fee_amount),
@@ -170,19 +159,24 @@ export class GeminiClient implements Client {
 	 * @param symbol The symbol for the new order.
 	 * @param amount Quoted decimal amount to purchase.
 	 * @param price Quoted decimal amount to spend per unit.
-	 * @param options An optional array containing at most one supported order execution option. See Order execution options for details.
+	 * @param type The type of order to execute.
 	 */
 	private async placeOrder(
 		side: OrderSide,
 		symbol: Symbol,
 		amount: number,
 		price: number,
-		option?: OrderExecutionOption,
+		type: OrderType,
 	): Promise<OrderResponse> {
 		try {
+			if (type === OrderType.LIMIT || type === OrderType.MARKET || type === OrderType.STOP) {
+				throw new Error(
+					'Improper order type specified to GeminiClient. Must be one of (LIMIT_AUCTION_ONLY, LIMIT_IMMEDIATE_OR_CANCEL, or LIMIT_MAKER_OR_CANCEL)',
+				)
+			}
 			const orderResult = await this.client.newOrder({
 				amount: Converter.numToStr(amount),
-				options: option,
+				options: type,
 				price: Converter.numToStr(price),
 				side,
 				symbol,

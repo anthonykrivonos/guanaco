@@ -1,5 +1,3 @@
-import { SymbolVolume } from './SymbolVolume'
-
 /**
  * Information about a symbol's ticker.
  */
@@ -20,7 +18,7 @@ export interface SymbolTicker {
 	last: number
 
 	/**
-	 * Volume of the symbol.
+	 * Volume of the symbol. Type varies by platform.
 	 */
-	volume: SymbolVolume
+	volume: any
 }

@@ -1,9 +1,10 @@
 {
-    "extends": [ "tslint:recommended", "tslint-config-prettier" ],
+    "extends": [ "tslint:recommended", "tslint-config-prettier", "tslint-etc" ],
     "rules": {
         "interface-name" : [ true, "never-prefix" ],
         "no-trailing-whitespace": true,
         "ban-types": false,
-        "object-literal-sort-keys": false
+        "object-literal-sort-keys": false,
+        "no-unused-declaration": true
     }
 }

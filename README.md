@@ -4,7 +4,7 @@
     <img src="https://images-na.ssl-images-amazon.com/images/I/61M4e0IVq1L._SY679_.jpg" height="300">
 </a>
 
-## A cute and cuddly multi-platform cryptocurrency quant trading engine in TypeScript.
+## A cute and cuddly cryptocurrency quant trading engine in TypeScript.
 
 > The guanaco (Lama guanicoe) (from Quechua "Wanaku", via Spanish) is a camelid native to South America, closely related to the llama. Its name comes from the Quechua word huanaco (modern spelling wanaku). - [Wikipedia](https://en.wikipedia.org/wiki/Guanaco)
 
@@ -51,6 +51,7 @@ Scheduler.hourInterval(() => {
 ### Current
 
 - [Gemini Node API](https://github.com/mjesuele/gemini-api-node)
+- [Coinbase Pro API](https://github.com/coinbase/coinbase-pro-node)
 
 ### Future
 

@@ -1,6 +1,6 @@
-import { RestClientOptions } from 'gemini-api'
+import { RestClientOptions as GeminiAPIClientOptions } from 'gemini-api'
 
-export interface GeminiClientOptions extends RestClientOptions {
+export interface GeminiClientOptions extends GeminiAPIClientOptions {
 	/**
 	 * User's Gemini API key.
 	 */

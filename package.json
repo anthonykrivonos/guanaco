@@ -1,6 +1,6 @@
 {
   "name": "guanaco",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A cute and cuddly multi-platform cryptocurrency quant trading engine in TypeScript.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -23,7 +23,9 @@
     "lib/**/*"
   ],
   "dependencies": {
+    "@types/form-data": "^2.5.0",
     "@types/node-cron": "^2.0.2",
+    "coinbase-pro": "^0.9.0",
     "gemini-api": "github:anthonykrivonos/gemini-api-node",
     "node-cron": "^2.0.3"
   },
@@ -36,6 +38,7 @@
     "ts-node": "^8.3.0",
     "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
+    "tslint-etc": "~1.6.0",
     "typescript": "^3.5.3"
   },
   "keywords": [

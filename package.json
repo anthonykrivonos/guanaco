@@ -1,7 +1,7 @@
 {
   "name": "guanaco",
   "version": "0.0.3",
-  "description": "A cute and cuddly multi-platform cryptocurrency quant trading engine in TypeScript.",
+  "description": "A cute and cuddly cryptocurrency quant trading engine in TypeScript.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
@@ -59,6 +59,7 @@
     "coin",
     "gemini-api",
     "gemini",
+    "coinbase",
     "client",
     "cron"
   ]

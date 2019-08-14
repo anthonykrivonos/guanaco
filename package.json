@@ -24,7 +24,7 @@
   ],
   "dependencies": {
     "@types/node-cron": "^2.0.2",
-    "gemini-api": "github:mjesuele/gemini-api-node",
+    "gemini-api": "github:anthonykrivonos/gemini-api-node",
     "node-cron": "^2.0.3"
   },
   "devDependencies": {

@@ -29,6 +29,14 @@ export class Converter {
 	}
 
 	/**
+	 * Converts the symbol enum to an array of exchange products [fromCurrency, toCurrency]
+	 * @param symbol The symbol to convert.
+	 */
+	public static symbolToProducts(symbol:Symbol): string[] {
+		return [symbol.substr(0, 3).toUpperCase(), symbol.substr(3, 3).toUpperCase()]
+	}
+
+	/**
 	 * Converts the digestible Coinbase product to a symbol enum.
 	 * @param product The product to convert.
 	 */

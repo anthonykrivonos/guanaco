@@ -1,6 +1,6 @@
-import { BacktestSummary } from "./BacktestSummary";
+import { BacktestClient } from "../clients"
 
 /**
- * A function that passes in a summary containing the simulated date and mappings of symbols to tickers.
+ * A function that passes in a backtesting client.
  */
-export type BacktestFunction = (summary:BacktestSummary)=>void
+export type BacktestFunction = (client:BacktestClient)=>void

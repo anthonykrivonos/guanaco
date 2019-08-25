@@ -97,6 +97,8 @@ export class CoinbaseClient implements Client {
 			amount: Converter.strToNum(order.size),
 			timestamp: new Date(order.done_at).getTime(),
 			type: (OrderSide as any)[order.type],
+			executed: order.settled,
+			side: order.side as OrderSide,
 		}))
 	}
 

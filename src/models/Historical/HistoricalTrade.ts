@@ -1,10 +1,16 @@
-import { OrderType } from '../Order'
+import { OrderId, OrderSide, OrderType } from '../Order'
+import { Symbol } from '../Symbol'
 
 export interface HistoricalTrade {
 	/**
 	 * Unique identifier for the trade.
 	 */
-	id?: string
+	id: OrderId
+
+	/**
+	 * The symbol that was traded.
+	 */
+	symbol?:Symbol
 
 	/**
 	 * Price of the order.
@@ -22,9 +28,14 @@ export interface HistoricalTrade {
 	timestamp?: number
 
 	/**
-	 * Type of the order (buy/sell).
+	 * Side of the order.
 	 */
-	type: OrderType
+	side: OrderSide
+
+	/**
+	 * Type of the order.
+	 */
+	type?: OrderType
 
 	/**
 	 * If true, this order was the taker in the trade.
@@ -40,4 +51,10 @@ export interface HistoricalTrade {
 	 * Amount charged to the aggressor.
 	 */
 	feeAmount?: number
+
+	/**
+	 * Was the trade executed?
+	 */
+	executed:boolean
+
 }

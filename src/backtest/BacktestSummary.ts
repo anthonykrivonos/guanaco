@@ -6,11 +6,25 @@ export interface BacktestSummary {
     /**
      * The simulated date of the summary.
      */
-    date:Date
+    date: Date
 
     /**
      * Rest: mappings of symbol to Typical Price.
      */
-    [rest: string]: any
+    [rest: string]: BacktestSymbolSummary|any
+
+}
+
+export interface BacktestSymbolSummary {
+
+    /**
+     * Volume of the symbol.
+     */
+    volume:number
+
+    /**
+     * Typical price of the symbol. (high + low + close)/3
+     */
+    typicalPrice:number
 
 }

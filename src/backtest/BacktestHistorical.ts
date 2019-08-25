@@ -62,7 +62,10 @@ export class BacktestHistorical {
                 for (const symbol in summaryTimeMap[summaryTime]) {
                     if (symbol as Symbol) {
                         const symbolBucket:HistoricalBucket = summaryTimeMap[summaryTime][symbol]
-                        summary[symbol as Symbol] = Math.getTypicalPrice(symbolBucket.high, symbolBucket.low, symbolBucket.close)
+                        summary[symbol as Symbol] = {
+                            volume: symbolBucket.volume,
+                            typicalPrice: Math.getTypicalPrice(symbolBucket.high, symbolBucket.low, symbolBucket.close),
+                        }
                     }
                 }
             }

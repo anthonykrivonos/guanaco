@@ -74,6 +74,9 @@ export class BackTester {
      */
     public async run(options:BacktestClientOptions, algorithm:BacktestFunction) {
         const history = await BacktestHistorical.getHistory(this.interval, this.startDate)
+        if (history.length == 0) {
+            throw new Error('Could not get historicals for backtesting')
+        }
         let orders:Map<OrderId,HistoricalTrade> = new Map()
         let productPrices = options
         let nextExecutionTime = this.executionInterval || 0

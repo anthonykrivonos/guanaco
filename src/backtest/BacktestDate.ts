@@ -7,7 +7,7 @@ export class BacktestDate extends Date {
      * Get the current date as a BacktestDate.
      */
     public static today() {
-        return new BacktestDate()
+        return new Date()
     }
 
     constructor(day?:number, month?:number, year?:number, hour?:number, minute?:number) {

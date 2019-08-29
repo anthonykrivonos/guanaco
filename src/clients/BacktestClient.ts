@@ -128,7 +128,7 @@ export class BacktestClient {
             const nextOrderId:OrderId = this.orderQueue.shift()!
             const order:HistoricalTrade = this.orders.get(nextOrderId)!
             const symbolSummary:BacktestSymbolSummary = this.summary[order.symbol!.toString()]
-            const product = Converter.symbolToProducts(order.symbol!)![0]
+            const product = Converter.symbolToProducts(order.symbol!)![1].toLowerCase()
             const price = symbolSummary.typicalPrice
             const volume = symbolSummary.volume
             const productValue:number = (this.options as any)[product] || 0

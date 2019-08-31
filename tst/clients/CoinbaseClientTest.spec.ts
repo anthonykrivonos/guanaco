@@ -1,12 +1,12 @@
 import { assert } from 'chai'
-import { CoinbaseClient } from "../../src"
+import { CoinbaseClient, Condition } from "../../src"
 
 /**
  * Test successful client creation.
  * TODO: Beef up these tests later.
  */
-assert(new CoinbaseClient({
+assert(Condition.notNull(new CoinbaseClient({
     key: '',
     secret: '',
     passphrase: '',
-}) != null)
+})))

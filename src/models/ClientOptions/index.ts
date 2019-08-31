@@ -1,3 +1,3 @@
 export * from './GeminiClientOptions'
 export * from './CoinbaseClientOptions'
-export * from './BacktestClientOptions'
+export * from './BacktestClientPortfolio'

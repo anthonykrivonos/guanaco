@@ -1,4 +1,4 @@
-import { OrderStatus, OrderId } from '../Order'
+import { OrderId, OrderStatus } from '../Order'
 
 export interface HistoricalAuction {
 	/**

@@ -1,6 +1,6 @@
 {
   "name": "guanaco",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A cute and cuddly cryptocurrency quant trading engine in TypeScript.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

@@ -10,7 +10,7 @@ export interface HistoricalTrade {
 	/**
 	 * The symbol that was traded.
 	 */
-	symbol?:Symbol
+	symbol?: Symbol
 
 	/**
 	 * Price of the order.
@@ -55,6 +55,5 @@ export interface HistoricalTrade {
 	/**
 	 * Was the trade executed?
 	 */
-	executed:boolean
-
+	executed: boolean
 }

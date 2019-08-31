@@ -1,12 +1,12 @@
 import { assert } from 'chai'
-import { GeminiClient } from "../../src"
+import { GeminiClient, Condition } from "../../src"
 
 /**
  * Test successful client creation.
  * TODO: Beef up these tests later.
  */
-assert(new GeminiClient({
+assert(Condition.notNull(new GeminiClient({
     key: '',
     sandbox: true,
     secret: '',
-}) != null)
+})))

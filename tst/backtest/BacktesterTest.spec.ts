@@ -1,15 +1,15 @@
-import { BackTester } from '../../src/backtest/Backtester';
-import { BacktestInterval } from '../../src/backtest/BacktestInterval';
-import { BacktestClientOptions } from '../../src/models/ClientOptions/BacktestClientOptions';
-import { BacktestClient } from '../../src'
+import { Backtester, BacktestClient, BacktestClientPortfolio, BacktestInterval, OrderType } from '../../src';
 
-let backtester = new BackTester(new Date(2019, 7, 1), BacktestInterval.ONE_DAY)
+const lastMonth = new Date(2019, 7, 30)
+const backtestInterval = BacktestInterval.ONE_DAY
 
-let backtestOptions:BacktestClientOptions = {
-    usd: 200
-}
+let backtester = new Backtester(lastMonth, backtestInterval)
 
-backtester.run(backtestOptions, (client:BacktestClient) => {
+let lastAskPrice = null
+backtester.run({ usd: 2400 }, (client:BacktestClient) => {
     const info = client.info('btcusd')
-    console.log(info)
+    if (lastAskPrice && lastAskPrice > info.ticker.ask) {
+        client.buy('btcusd', 0.25, info.ticker.ask, OrderType.MARKET)
+        lastAskPrice = info.ticker.ask
+    }
 })

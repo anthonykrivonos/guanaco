@@ -1,3 +1,5 @@
+import { Condition } from '../../utils'
+
 /**
  * Symbol to place order on.
  * Structure: 'xxxyyy', where 'xxx' is the price currency and 'yyy' is the quantity currency.
@@ -23,7 +25,7 @@ export type Symbol =
  * Array of symbol strings, for easy access.
  * Caveat: MUST keep this updated with the Symbol enum literal.
  */
-export const symbols:any = {
+export const symbols: any = {
 	btcusd: 0,
 	ethusd: 1,
 	ethbtc: 2,
@@ -41,6 +43,6 @@ export const symbols:any = {
 	ltcbch: 14,
 }
 
-export const symbolExists = (symbol:string) => {
-	return symbols[symbol] != null
+export const symbolExists = (symbol: string) => {
+	return Condition.notNull(symbols[symbol])
 }

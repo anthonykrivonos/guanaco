@@ -1,4 +1,4 @@
-import { Symbol } from "../models";
+import { Symbol } from '../models'
 
 export class Converter {
 	/**
@@ -24,7 +24,7 @@ export class Converter {
 	 * Converts the symbol enum to a digestible Coinbase product.
 	 * @param symbol The symbol to convert.
 	 */
-	public static symbolToProduct(symbol:Symbol): string {
+	public static symbolToProduct(symbol: Symbol): string {
 		return `${symbol.substr(0, 3)}-${symbol.substr(3, 3)}`.toUpperCase()
 	}
 
@@ -32,7 +32,7 @@ export class Converter {
 	 * Converts the symbol enum to an array of exchange products [fromCurrency, toCurrency]
 	 * @param symbol The symbol to convert.
 	 */
-	public static symbolToProducts(symbol:Symbol): string[] {
+	public static symbolToProducts(symbol: Symbol): string[] {
 		return [symbol.substr(0, 3).toUpperCase(), symbol.substr(3, 3).toUpperCase()]
 	}
 
@@ -40,8 +40,7 @@ export class Converter {
 	 * Converts the digestible Coinbase product to a symbol enum.
 	 * @param product The product to convert.
 	 */
-	public static productToSymbol(product:string): Symbol {
+	public static productToSymbol(product: string): Symbol {
 		return product.replace('-', '').toLowerCase() as Symbol
 	}
-
 }

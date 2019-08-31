@@ -1,10 +1,10 @@
-import { OrderStatus } from '../Order'
+import { OrderId, OrderStatus } from '../Order'
 
 export interface HistoricalAuction {
 	/**
 	 * Unique ID for the auction.
 	 */
-	id?: string
+	id?: OrderId
 
 	/**
 	 * Timestamp of the auction.

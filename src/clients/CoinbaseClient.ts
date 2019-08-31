@@ -25,7 +25,7 @@ export class CoinbaseClient implements Client {
 	}
 
 	public async info(symbol: Symbol): Promise<SymbolInfo> {
-		const product: string = this.toCoinbaseProduct(symbol)
+		const product: string = Converter.symbolToProduct(symbol)
 		const ticker: ProductTicker = await this.client.getProductTicker(product)
 		return {
 			ticker: {
@@ -97,15 +97,9 @@ export class CoinbaseClient implements Client {
 			amount: Converter.strToNum(order.size),
 			timestamp: new Date(order.done_at).getTime(),
 			type: (OrderSide as any)[order.type],
+			executed: order.settled,
+			side: order.side as OrderSide,
 		}))
-	}
-
-	/**
-	 * Converts the symbol enum to a digestible Coinbase product.
-	 * @param symbol The symbol to convert.
-	 */
-	private toCoinbaseProduct(symbol: Symbol): string {
-		return `${symbol.substr(0, 3)}-${symbol.substr(3, 3)}`.toUpperCase()
 	}
 
 	/**
@@ -137,7 +131,7 @@ export class CoinbaseClient implements Client {
 			)
 		}
 		const params: OrderParams = {
-			product_id: this.toCoinbaseProduct(symbol),
+			product_id: Converter.symbolToProduct(symbol),
 			// @ts-ignore
 			type: type.toString(),
 			price: Converter.numToStr(price),

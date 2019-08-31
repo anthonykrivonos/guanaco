@@ -5,6 +5,7 @@
         "no-trailing-whitespace": true,
         "ban-types": false,
         "object-literal-sort-keys": false,
-        "no-unused-declaration": true
+        "no-unused-declaration": true,
+        "radix": false
     }
 }

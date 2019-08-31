@@ -124,10 +124,11 @@ export class GeminiClient implements Client {
 			price: Converter.strToNum(entry.price),
 			amount: Converter.strToNum(entry.amount),
 			timestamp: entry.timestamp,
-			type: (OrderSide as any)[entry.type],
 			aggressor: entry.aggressor,
 			feeCurrency: entry.fee_currency,
 			feeAmount: Converter.strToNum(entry.fee_amount),
+			executed: true,
+			side: (OrderSide as any)[entry.type],
 		}))
 	}
 

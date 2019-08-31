@@ -1,6 +1,7 @@
 import { schedule as scheduleTask, ScheduledTask, validate as validateTask } from 'node-cron'
 
 import { DayOfMonth, DayOfWeek, Hour, Interval, Minute, Month, Range, Second } from '../models'
+import { Condition } from '../utils'
 
 /**
  * Function that can be run in the scheduler.
@@ -102,11 +103,11 @@ export class Scheduler {
 		if (second !== undefined) {
 			cronExpression += `${second} `
 		}
-		cronExpression += `${minute == null ? Scheduler.WILDCARD : minute} `
-		cronExpression += `${hour == null ? Scheduler.WILDCARD : hour} `
-		cronExpression += `${day == null ? Scheduler.WILDCARD : day} `
-		cronExpression += `${month == null ? Scheduler.WILDCARD : month} `
-		cronExpression += `${dayOfWeek == null ? Scheduler.WILDCARD : dayOfWeek}` // <-- No extra space here
+		cronExpression += `${Condition.null(minute) ? Scheduler.WILDCARD : minute} `
+		cronExpression += `${Condition.null(hour) ? Scheduler.WILDCARD : hour} `
+		cronExpression += `${Condition.null(day) ? Scheduler.WILDCARD : day} `
+		cronExpression += `${Condition.null(month) ? Scheduler.WILDCARD : month} `
+		cronExpression += `${Condition.null(dayOfWeek) ? Scheduler.WILDCARD : dayOfWeek}` // <-- No extra space here
 		this.validate(cronExpression)
 		return this.perform(callback, cronExpression)
 	}
